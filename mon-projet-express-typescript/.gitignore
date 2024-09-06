@@ -1,0 +1,32 @@
+# Dossier des dépendances Node.js
+node_modules/
+
+# Fichiers de sortie de TypeScript
+dist/
+
+# Fichiers de logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement local
+.env
+
+# Cache et données temporaires
+*.tsbuildinfo
+.DS_Store
+.idea/
+.vscode/
+.tmp/
+.sass-cache/
+
+# Fichiers de test coverage (si vous utilisez Jest pour le rapport de couverture)
+coverage/
+
+# Sortie de production
+build/
+
+# Configurations système
+*.swp
