@@ -1,11 +1,12 @@
 import fs from 'fs';
+import path from 'path';
 
 export function loadCertificate() {
     let certificatOptions;
     try {
         certificatOptions = {
-            key: fs.readFileSync('key.pem'),
-            cert: fs.readFileSync('cert.pem')
+            key: fs.readFileSync(path.join('certs', 'key.pem')),
+            cert: fs.readFileSync(path.join('certs', 'cert.pem'))
         };
     } catch (error) {
         console.error("Erreur lors du chargement des certificats SSL :", error);

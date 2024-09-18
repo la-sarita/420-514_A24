@@ -30,3 +30,6 @@ build/
 
 # Configurations système
 *.swp
+
+# Certificats SSL
+certs/
