@@ -6,4 +6,8 @@ export class UserController {
     const users = await UserService.getAllUsers();
     res.json(users);
   }
+
+  public static async getAdminData(req: Request, res: Response) {
+    res.json({ message: 'Données réservées aux administrateurs.' });
+  }
 }

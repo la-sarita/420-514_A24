@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { UserController } from '../controllers/user.controller';
+import { roleMiddleware } from '../middlewares/roles.middleware';
+import { verifyToken } from '../middlewares/auth.middleware';
 
 const router = Router();
 const userController = new UserController();
@@ -31,5 +33,7 @@ const userController = new UserController();
  *                     example : john.doe@example.com
  */
 router.get('/users', userController.getAllUsers);
+
+router.get('/admin', verifyToken, roleMiddleware(['admin']), UserController.getAdminData);
 
 export default router;
