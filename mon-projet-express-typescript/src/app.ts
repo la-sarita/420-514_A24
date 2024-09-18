@@ -6,6 +6,8 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import https from 'https';
 import { loadCertificate } from './middlewares/certificat.middleware';
+import { config } from './config/config';
+import session from 'express-session';
 
 const app = express();
 // Middleware de parsing du JSON
@@ -23,6 +25,16 @@ const swaggerOptions = {
   },
   apis: ['./src/routes/*.route.ts'], // Fichier où les routes de l'API sont définies
 };
+
+// Middleware de session avec la clé secrète provenant des variables de configuration
+app.use(session({
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: config.isProduction, // Les cookies sécurisés ne sont activés qu'en production
+  }
+}));
 
 // Générer la documentation à partir des options
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
