@@ -1,7 +1,11 @@
 import express, { Request, Response } from 'express';
-import { Color } from './enum/color.enum';
-import { Status } from './enum/status.enum';
-import { User } from './interface/user.interface';
+import { Color } from './types/enum/color.enum';
+import { Status } from './types/enum/status.enum';
+import { User } from './types/interface/user.interface';
+import { Person } from './types/class/person';
+import { Employee } from './types/class/employe';
+import { Dog } from './types/class/animal';
+import { Rectangle } from './types/class/rectangle';
 
 const app = express();
 const port = 3001;
@@ -38,6 +42,22 @@ let age2 = 30;  // TypeScript infère automatiquement que `age` est de type `num
 let direction: "left" | "right" | "up" | "down";
 direction = "left";  // valide
 //direction = "center";  // Erreur, "center" n'est pas un type valide
+
+const alice = new Person("Alice", 25, "Canada");
+console.log(alice.greet()); // Hello, my name is Alice and I'm 25 years old.
+const employee = new Employee("Bob", 30, "Canada", "Developer");
+console.log(employee.getDetails()); // Hello, I am from Canada and I work as a Developer.
+
+// Héritage
+const dog = new Dog("Rex");
+console.log(dog.speak()); // Rex barks.
+dog.makeSound(); // Bark!
+dog.move(); // Moving...
+
+// Interfaces
+const rect = new Rectangle(10, 20);
+console.log(rect.area()); // 200
+
 function greet(name: string): string {
     return `Hello, ${name}`;
 }
